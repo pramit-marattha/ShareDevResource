@@ -5,25 +5,15 @@ import ListPage from "./pages/ListPage";
 import HomePage from "./pages/HomePage";
 import Loading from "./components/shared/Loading";
 import Register from "./components/Resgister";
-import * as db from "./firestore";
-// import useAuth from "./hooks/useAuth";
+import useAuth from "./hooks/useAuth";
 
 function App() {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    return db.checkAuthentication((user) => {
-      setLoading(false);
-      setUser(user);
-    });
-  }, []);
-
   if (loading) return <Loading />;
   return user ? <AuthApp /> : <UnAuthApp />;
 }
 
 function AuthApp() {
+  const { user, loading } = useAuth();
   return (
     <BrowserRouter>
       <Switch>
