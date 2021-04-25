@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ListPage from "./pages/ListPage";
 import HomePage from "./pages/HomePage";
 // import Loading from "./components/shared/Loading";
-// import SignIn from "./components/SignIn";
+import Register from "./components/Resgister";
 // import useAuth from "./hooks/useAuth";
 
 function App() {
@@ -28,12 +28,12 @@ function AuthApp() {
 }
 
 function UnAuthApp() {
-  return "unauth";
+  return <Register />;
 }
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <UnAuthApp />
   </React.StrictMode>,
   document.getElementById("root")
 );
