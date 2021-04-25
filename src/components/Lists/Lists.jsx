@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import defaultImage from "../../static/default.svg";
-// import * as db from "../firestore";
+import * as db from "../firestore";
 // import Empty from "./shared/Empty";
 // import Error from "./shared/Error";
 // import Loading from "./shared/Loading";
 
 function UserLists() {
+  useEffect(() => {
+    db.getCollection("topiclists");
+  }, []);
   return (
     <>
       {/* display user list count */}
