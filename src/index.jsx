@@ -8,12 +8,13 @@ import Register from "./components/Resgister";
 import useAuth from "./hooks/useAuth";
 
 function App() {
+  const { user, loading } = useAuth();
+
   if (loading) return <Loading />;
   return user ? <AuthApp /> : <UnAuthApp />;
 }
 
 function AuthApp() {
-  const { user, loading } = useAuth();
   return (
     <BrowserRouter>
       <Switch>
