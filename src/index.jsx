@@ -28,7 +28,11 @@ function AuthApp() {
 }
 
 function UnAuthApp() {
-  return <Register />;
+  return (
+    <div>
+      <Register />
+    </div>
+  );
 }
 
 ReactDOM.render(
