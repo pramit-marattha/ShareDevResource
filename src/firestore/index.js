@@ -31,3 +31,8 @@ export async function signInWithGoogle() {
 export function checkAuthentication(userCallBack) {
   return auth.onAuthStateChanged(userCallBack);
 }
+
+export async function logOut() {
+  await auth.signOut();
+  window.location.reload();
+}
