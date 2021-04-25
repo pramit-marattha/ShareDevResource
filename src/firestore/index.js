@@ -27,3 +27,7 @@ export async function signInWithGoogle() {
   await auth.signInWithPopup(provider);
   window.location.reload();
 }
+
+export function checkAuthentication(userCallBack) {
+  return auth.onAuthStateChanged(userCallBack);
+}
