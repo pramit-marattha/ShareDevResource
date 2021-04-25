@@ -2,8 +2,6 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/storage";
-// import dotenv from "dotenv";
-// dotenv.config();
 
 var firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
