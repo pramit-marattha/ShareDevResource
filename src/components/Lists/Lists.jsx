@@ -1,35 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import defaultImage from "../../static/default.svg";
-import * as db from "../firestore";
-import Empty from "../shared/Empty";  
+import topicBack from "../../../static/topicBack.svg";
+import * as db from "../../firestore";
+import Empty from "../shared/Empty";
 import Error from "../shared/Error";
 import Loading from "../shared/Loading";
 import useSWR from "swr";
-// stale while revalidate
 
-function UserLists({ user }) {
+function Lists({ user }) {
   const { data: topiclists, error } = useSWR(user.uid, db.getUserTopiclists);
-  // const [topiclists, setTopiclists] = useState([]);
-  // useEffect(() => {
-  //   // db.getCollection("topiclists");
-  //   db.getUserTopiclists("").then((topiclists) => {
-  //     setTopiclists(topicists);
-  //   });
-  // }, []);
-  if (!error) return <Error message={error.message} />;
+  if (error) return <Error message={error.message} />;
   if (!topiclists) return <Loading />;
   if (topiclists.length === 0) return <Empty />;
 
+  console.log("topiclists", user);
+
   return (
     <>
-      {/* display user list count */}
       <section className="text-gray-500 bg-gray-900 body-font">
         <div className="container px-5 py-5 mx-auto">
           <div className="flex flex-wrap -m-4">
-            {/* {topiclists.map((topiclist) => (
-              <ListItem key={topiclist.id} topiclist={topiclist} />
-            ))} */}
+            {topiclists.map((topic) => (
+              <ListItem key={topic.id} topiclist={topic} />
+            ))}
           </div>
         </div>
       </section>
@@ -70,7 +63,7 @@ function ListItem() {
           <img
             alt="gallery"
             className="absolute inset-0 w-full h-full object-cover object-center"
-            src={defaultImage}
+            src={topicBack}
           />
           <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
             <ul className="list-disc">
@@ -89,4 +82,4 @@ function ListItem() {
   );
 }
 
-export default UserLists;
+export default Lists;
