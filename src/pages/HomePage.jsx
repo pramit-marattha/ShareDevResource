@@ -13,7 +13,7 @@ function HomePage() {
     <Layout>
       <Navbar user={user} />
       <CreateList user={user} />
-      <Lists />
+      <Lists user={user} />
     </Layout>
   );
 }
