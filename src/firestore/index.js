@@ -54,3 +54,41 @@ export async function getUserTopiclists(userId) {
     ...doc.data(),
   }));
 }
+
+function uploadTopicImage(file) {
+  const uploadTask = storage
+    .ref(`images/${file.name}-${file.lastModified}`)
+    .put(file);
+  return new Promise((resolve, reject) => {
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => console.log("Image Uploading", snapshot),
+      reject,
+      () => {
+        storage
+          .ref("images")
+          .child(`${file.name}-${file.lastModified}`)
+          .getDownloadURL()
+          .then(resolve);
+      }
+    );
+  });
+}
+
+export async function createTopicLists(list, user) {
+  const { name, image, description } = list;
+  await db.collection("topiclists").add({
+    name,
+    description,
+    image: image ? await uploadTopicImage(image) : null,
+    created: firebase.firestore.FieldValue.serverTimestamp(),
+    author: user.uid,
+    userIds: [user.uid],
+    users: [
+      {
+        id: user.uid,
+        name: user.displayName,
+      },
+    ],
+  });
+}
