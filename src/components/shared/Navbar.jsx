@@ -6,7 +6,6 @@ import useAuth from "../../hooks/useAuth";
 function Navbar({ user }) {
   const { pathname } = useLocation();
   const isHomeRoute = pathname === "/";
-  console.log("rerererererer", user);
 
   return (
     <header className="text-gray-500 bg-gray-900 body-font">

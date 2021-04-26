@@ -37,7 +37,11 @@ export async function logOut() {
 
 export async function getCollection(id) {
   const snapshot = await db.collection(id).get();
-  const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  const data = snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  console.log(data);
 }
 
 export async function getUserTopiclists(userId) {
@@ -45,5 +49,8 @@ export async function getUserTopiclists(userId) {
     .collection("topiclists")
     .where("author", "==", userId)
     .get();
-  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  return snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
 }

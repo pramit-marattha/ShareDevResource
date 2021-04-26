@@ -7,7 +7,6 @@ import Navbar from "../components/shared/Navbar";
 
 function HomePage() {
   const user = React.useContext(UserContext);
-  console.log(user);
 
   return (
     <Layout>
