@@ -1,7 +1,23 @@
-import React from "react";
-// import * as db from "../firestore";
+import React, { useState, useEffect } from "react";
+import * as db from "../../firestore";
 
 function CreateList({ user }) {
+  const [list, setList] = useState({ name: "", description: "", image: null });
+
+  function handleChange(event) {
+    const { name, value, files } = event.target;
+    if (files) {
+      const image = files[0];
+      setList((prevState) => ({ ...prevState, image }));
+    } else {
+      setList((prevState) => ({ ...prevState, [name]: value }));
+    }
+  }
+
+  function handleCreateTopicLists() {
+    // console.log(list);
+    db.createTopicLists(list, user);
+  }
   return (
     <div className="flex flex-col text-center w-full mb-12">
       <h1 className="text-3xl font-medium title-font mb-4 text-white tracking-widest">
@@ -17,6 +33,7 @@ function CreateList({ user }) {
           placeholder="Enter topic name"
           type="text"
           name="name"
+          onChange={handleChange}
           required
         />
         <textarea
@@ -24,15 +41,22 @@ function CreateList({ user }) {
           placeholder="short description"
           type="text"
           name="description"
+          onChange={handleChange}
         />
         <input
           className="bg-gray-900 rounded-xl border text-white border-gray-900 focus:outline-none focus:border-green-500 text-base px-4 py-3 mb-4"
           placeholder="Add topic name"
           type="file"
           name="image"
+          onChange={handleChange}
         />
-        {/* display preview image */}
-        <button className="text-white rounded-full bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
+        {list.image && (
+          <img className="mb-4" src={URL.createObjectURL(list.image)} />
+        )}
+        <button
+          onClick={handleCreateTopicLists}
+          className="text-white rounded-full bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg"
+        >
           ➕ Create
         </button>
         <p className="text-xs text-gray-600 mt-3">*Topic name is required</p>
