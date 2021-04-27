@@ -19,7 +19,7 @@ function Lists({ user }) {
     <>
       <UserListCount count={topiclists.length} />
       <section className="text-gray-500 bg-gray-900 body-font">
-        <div className="container px-5 py-5 mx-auto">
+        <div className="container px-10 py-10 mx-auto">
           <div className="flex flex-wrap -m-4">
             {topiclists.map((topic) => (
               <ListItem key={topic.id} topic={topic} />
@@ -27,7 +27,22 @@ function Lists({ user }) {
           </div>
         </div>
       </section>
+      <UserListCountDown count={topiclists.length} />
     </>
+  );
+}
+
+function UserListCountDown({ count }) {
+  return (
+    <div className="container px-5 py-5 mb-8 bg-gray-800 rounded-b-full mx-auto flex justify-center text-center">
+      <div className="p-4 sm:w-1/4 w-1/2">
+        <p className="leading-relaxed">Total</p>
+        <h2 className="title-font font-medium sm:text-4xl text-3xl text-white">
+          {count}
+        </h2>
+        <p className="leading-relaxed">Topics</p>
+      </div>
+    </div>
   );
 }
 
@@ -125,9 +140,9 @@ function UserListCount({ count }) {
           <path d="m458.119 384.553c-1.294-2.474-3.854-4.024-6.646-4.024h-124.512c-4.143 0-7.5 3.358-7.5 7.5s3.357 7.5 7.5 7.5h119.972l24.116 46.109-24.115 46.083h-281.229v-92.191h126.177c4.143 0 7.5-3.358 7.5-7.5s-3.357-7.5-7.5-7.5h-126.653c-1.491-5.327-6.386-9.251-12.194-9.251h-115.406c-6.971 0-12.643 5.672-12.643 12.643v115.408c0 6.987 5.671 12.671 12.643 12.671h115.405c5.811 0 10.708-3.937 12.196-9.28h286.243c2.791 0 5.351-1.55 6.646-4.022l28.04-53.582c1.14-2.178 1.14-4.776 0-6.954zm-307.414 112.447h-110.719v-110.723h110.719z" />
         </svg>
         <h2 className="title-font font-medium sm:text-4xl text-3xl text-white">
-          {count}
+          {/* {count} */}
         </h2>
-        <p className="leading-relaxed">Topics</p>
+        <p className="leading-relaxed">Topic Lists</p>
       </div>
     </div>
   );

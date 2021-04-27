@@ -10,4 +10,4 @@
 
 ## Topic list creation page
 
-![topic_list](https://user-images.githubusercontent.com/37651620/116207509-aeb8a400-a75f-11eb-9b5e-3c2dc2d7b9b7.png)
+![topic_list](https://user-images.githubusercontent.com/37651620/116213702-bbd89180-a765-11eb-9efc-57265b577992.png)
