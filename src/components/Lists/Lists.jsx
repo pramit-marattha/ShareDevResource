@@ -136,7 +136,7 @@ function UserListCount({ count }) {
 function ListItem({ topic }) {
   const { id, name, description, image, users } = topic;
   return (
-    <div className="lg:w-1/3 sm:w-1/2 p-4">
+    <div className="lg:w-1/3 sm:w-1/2 p-1">
       {" "}
       <Link to={`/${id}`}>
         <div className="flex relative">
@@ -145,17 +145,17 @@ function ListItem({ topic }) {
             className="absolute inset-0 w-auto h-auto object-cover object-center"
             src={image || topicBack}
           />
-          <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
+          <div className="px-8 py-1 relative z-10 w-full border-4 border-green-700 bg-green-800 opacity-0 hover:opacity-100">
             <ul className="list-disc">
-              <li className="tracking-widest text-sm title-font font-medium text-orange-500 mb-1">
+              <li className="tracking-widest text-sm title-font font-medium text-red-500 mb-1">
                 {users[0].name}{" "}
                 {users.length > 1 && `+ ${users.length - 1} others devlopers`}
               </li>
             </ul>
-            <h1 className="title-font text-lg font-medium text-white mb-3">
+            <h1 className="title-font text-lg font-medium text-blue-500 mb-3">
               {name}
             </h1>
-            <p className="leading-relaxed">{description}</p>
+            <p className="leading-relaxed text-gray-400">{description}</p>
           </div>
         </div>
       </Link>
