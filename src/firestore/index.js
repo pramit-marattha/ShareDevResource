@@ -103,3 +103,28 @@ export async function getList(listId) {
     throw Error(error);
   }
 }
+
+export async function createTopicListItem({ user, listId, item }) {
+  try {
+    const response = await fetch(
+      `https://shot.screenshotapi.net/screenshot?token=X1Z8STW-9B1MF0H-JZEN9SV-1NDCMSY&url=${item.link}`
+    );
+    const { screenshot } = await response.json();
+    db.collection("topiclists")
+      .doc(listId)
+      .collection("items")
+      .add({
+        name: item.name,
+        link: item.link,
+        image: screenshot,
+        created: firebase.firestore.FieldValue.serverTimestamp(),
+        author: {
+          id: user.uid,
+          username: user.displayName,
+        },
+      });
+  } catch (error) {
+    console.error(error);
+    throw new Error(error);
+  }
+}
