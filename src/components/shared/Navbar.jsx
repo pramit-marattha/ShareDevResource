@@ -25,11 +25,11 @@ function Navbar({ user }) {
         <div className="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
           <button
             onClick={db.logOut}
-            className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"
+            className="inline-flex items-center text-red-600 font-bold bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"
           >
             Logout
             <svg
-              fill="green"
+              fill="red"
               stroke="black"
               strokeLinecap="round"
               strokeLinejoin="round"
