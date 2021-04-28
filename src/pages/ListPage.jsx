@@ -1,24 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Layout from "../components/shared/Layout";
-// import CreateItem from "../components/CreateItem";
-// import ItemList from "../components/ItemList";
-// import JoinList from "../components/JoinList";
-// import Error from "../components/shared/Error";
-// import Loading from "../components/shared/Loading";
-// import * as db from "../firestore";
+import CreateItem from "../components/CreateItem";
+import ItemList from "../components/ItemList";
+import JoinList from "../components/JoinList";
+import Error from "../components/shared/Error";
+import Loading from "../components/shared/Loading";
+import { UserContext } from "../index";
+import * as db from "../firestore";
+import useSWR from "swr";
 
-function ListPage() {
+function ListPage({ location }) {
+  const user = React.useContext(UserContext);
+  const listId = location.pathname;
+  const { data: list, error } = useSWR(listId, db.getList);
+
+  if (error) return <Error message={error.message} />;
+  if (!list) return <Loading />;
+
   return (
     <Layout>
       <section className="text-gray-500 bg-gray-900 body-font">
         <div className="container mx-auto flex flex-col px-5 py-4 justify-center items-center">
           <div className="w-full md:w-2/3 flex flex-col mb-16 items-center text-center">
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium font-bold text-white">
-              List Name
+              {list.name}
             </h1>
-            <p className="mb-8 leading-relaxed">List Description</p>
-            {/* Create new list item */}
+            <p className="mb-8 leading-relaxed">{list.description}</p>
+            <CreateItem user={user} listId={listId} />
             <p className="text-sm mt-2 text-gray-500 mb-8 w-full">
               New links appear below in realtime ✨
             </p>
@@ -46,7 +55,7 @@ function ListPage() {
           </div>
         </div>
       </section>
-      {/* display all items in list */}
+      <ItemList listId={listId} />
     </Layout>
   );
 }

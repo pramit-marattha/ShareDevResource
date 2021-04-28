@@ -92,3 +92,14 @@ export async function createTopicLists(list, user) {
     ],
   });
 }
+
+export async function getList(listId) {
+  try {
+    const topiclist = await db.collection("topiclists").doc(listId).get();
+    if (!topiclist.exists) throw Error("Topic does not exists");
+    return topiclist.data();
+  } catch (error) {
+    console.error(error);
+    throw Error(error);
+  }
+}
