@@ -128,3 +128,12 @@ export async function createTopicListItem({ user, listId, item }) {
     throw new Error(error);
   }
 }
+
+export function subscriptionTopicListItems(listId, cb) {
+  return db
+    .collection("topiclists")
+    .doc(listId)
+    .collection("items")
+    .orderBy("created", "desc")
+    .onSnapshot(cb)
+}
