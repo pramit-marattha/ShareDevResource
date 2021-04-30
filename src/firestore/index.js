@@ -135,5 +135,14 @@ export function subscriptionTopicListItems(listId, cb) {
     .doc(listId)
     .collection("items")
     .orderBy("created", "desc")
-    .onSnapshot(cb)
+    .onSnapshot(cb);
+}
+
+export function deleteTopicListItem(listId, itemId) {
+  return db
+    .collection("topiclists")
+    .doc(listId)
+    .collection("items")
+    .doc(itemId)
+    .delete();
 }
