@@ -47,7 +47,8 @@ export async function getCollection(id) {
 export async function getUserTopiclists(userId) {
   const snapshot = await db
     .collection("topiclists")
-    .where("author", "==", userId)
+    // .where("author", "==", userId)
+    .where('userIds','array-contains',userId)
     .get();
   return snapshot.docs.map((doc) => ({
     id: doc.id,
@@ -145,4 +146,18 @@ export function deleteTopicListItem(listId, itemId) {
     .collection("items")
     .doc(itemId)
     .delete();
+}
+
+export async function addUserToNewTopicList(user, listId) {
+  await db
+    .collection("topiclists")
+    .doc(listId)
+    .update({
+      userIds: firebase.firestore.FieldValue.arrayUnion(user.uid),
+      users: firebase.firestore.FieldValue.arrayUnion({
+        id: user.uid,
+        name: user.displayName,
+      }),
+    });
+  window.location.reload();
 }
