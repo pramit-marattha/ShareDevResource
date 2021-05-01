@@ -28,27 +28,27 @@ function ListPage({ location }) {
             </h1>
             <p className="mb-8 leading-relaxed">{list.description}</p>
             <CreateItem user={user} listId={listId} />
-            <p className="text-sm mt-2 text-gray-500 mb-8 w-full">
-              New links appear below in realtime ✨
-            </p>
+            <p className="text-sm mt-2 text-gray-500 mb-8 w-full"></p>
             <div className="flex text-gray-300">
-              <button className="bg-orange-500 inline-flex py-3 px-5 rounded-lg items-center hover:bg-orange-600 hover:text-white focus:outline-none">
+              <button className="bg-purple-500 inline-flex py-3 px-5 rounded-full items-center hover:bg-orange-600 hover:text-white focus:outline-none">
                 <span className="flex items-start flex-col leading-none">
                   <span className="text-xs text-gray-200 mb-1">
-                    Share With Friends
+                    Share with everyone
                   </span>
-                  <span className="title-font font-medium">Copy Link</span>
+                  <span className="title-font font-medium">📎 Copy Link</span>
                 </span>
               </button>
               <Link
                 to="/"
-                className="bg-gray-800 inline-flex py-3 px-5 rounded-lg items-center ml-4 hover:bg-gray-700 hover:text-white focus:outline-none"
+                className="bg-gray-800 inline-flex py-3 px-5 rounded-full items-center ml-4 hover:bg-gray-700 hover:text-white focus:outline-none"
               >
                 <span className="flex items-start flex-col leading-none">
                   <span className="text-xs text-gray-600 mb-1">
-                    Visit Home Page
+                    Go back to Home Page
                   </span>
-                  <span className="title-font font-medium">Create List</span>
+                  <span className="flex align-center title-font font-medium justify-center">
+                    ✨Create List
+                  </span>
                 </span>
               </Link>
             </div>

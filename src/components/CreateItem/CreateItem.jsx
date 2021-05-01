@@ -27,20 +27,20 @@ function CreateItem({ user, listId }) {
     <>
       <form
         onSubmit={handleCreateItem}
-        className="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:px-0"
+        className="flex lg:w-5/6 w-full sm:flex-row flex-col mx-auto px-8 sm:px-0"
       >
         <input
-          className="flex-grow w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-green-500 text-base px-4 py-2 mr-4 mb-4 sm:mb-0"
+          className="flex-grow w-full bg-purple-800 rounded border border-gray-700 text-white focus:outline-none focus:border-purple-800 text-base px-4 py-2 mr-4 mb-4 sm:mb-0"
           name="name"
-          placeholder="Add item name"
+          placeholder="Topic name"
           onChange={(event) => setName(event.target.value)}
           value={name}
           type="text"
         />
         <input
-          className="flex-grow w-full bg-gray-800 rounded border border-gray-700 text-white focus:outline-none focus:border-green-500 text-base px-4 py-2 mr-4 mb-4 sm:mb-0"
+          className="flex-grow w-full bg-purple-800 rounded border border-gray-700 text-white focus:outline-none focus:border-purple-800 text-base px-4 py-2 mr-4 mb-4 sm:mb-0"
           name="link"
-          placeholder="Add link"
+          placeholder="https://www."
           type="url"
           onChange={(event) => setLink(event.target.value)}
           value={link}
@@ -51,7 +51,7 @@ function CreateItem({ user, listId }) {
           disabled={submitting}
           className="inline-flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg"
         >
-          {submitting ? "Creating..." : "Create"}
+          {submitting ? "Creating..." : "➕Create"}
         </button>
       </form>
       <Error message={error} />
