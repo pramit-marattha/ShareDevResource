@@ -10,7 +10,7 @@ function HomePage() {
 
   return (
     <Layout>
-      <Navbar user={user} />
+      {/* <Navbar user={user} /> */}
       <CreateList user={user} />
       <Lists user={user} />
     </Layout>
