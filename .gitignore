@@ -84,6 +84,8 @@ out
 .nuxt
 dist
 .firebase
+.firebaserc
+firebase.json
 
 # Gatsby files
 .cache/

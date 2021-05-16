@@ -1,5 +1,14 @@
 ## Share Dev Resource => https://sharedevresources.web.app/
 
+## JOIN WITH THE LINK BELOW NOW!!!
+
+[REACT RESOURCES](https://sharedevresources.web.app/1p7rzjk1it6xJpqJC9VU)
+[CSS RESOURCES](https://sharedevresources.web.app/Arfy3FSjI372IHz1QFIX)
+[SASS RESOURCES](https://sharedevresources.web.app/KhQJPvqNpYIhQDbq5II3)
+[HTML RESOURCES](https://sharedevresources.web.app/QyWrPfzgFi3ZWFvgrbrq)
+[NODE RESOURCES](https://sharedevresources.web.app/gY0DfhjLPu49HFrZXR4U)
+[JAVASCRIPT RESOURCES](https://sharedevresources.web.app/xFyCOTZMdlZHSLcCPQ3j)
+
 ## Login Page
 
 ![image](https://user-images.githubusercontent.com/37651620/115992017-25806080-a5eb-11eb-8e61-65afead3a90f.png)
