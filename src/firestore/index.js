@@ -13,7 +13,7 @@ var firebaseConfig = {
   measurementId: import.meta.env.VITE_MEASUREMENT_ID,
 };
 
-const firebaseApp = !firebase.apps.length
+export const firebaseApp = !firebase.apps.length
   ? firebase.initializeApp(firebaseConfig)
   : firebase.app();
 const db = firebaseApp.firestore();
@@ -48,7 +48,7 @@ export async function getUserTopiclists(userId) {
   const snapshot = await db
     .collection("topiclists")
     // .where("author", "==", userId)
-    .where('userIds','array-contains',userId)
+    .where("userIds", "array-contains", userId)
     .get();
   return snapshot.docs.map((doc) => ({
     id: doc.id,

@@ -1,8 +1,35 @@
-import React from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import homeSvg from "../../../static/home.svg";
 import * as db from "../../firestore";
 
 function Register() {
+  const handleLogin = useCallback(async (event) => {
+    event.preventDefault();
+    const { email, password } = event.target.elements;
+    try {
+      await db.firebaseApp
+        .auth()
+        .signInWithEmailAndPassword(email.value, password.value);
+      window.location.reload();
+    } catch (error) {
+      alert(error);
+    }
+  });
+
+  const handleSignUp = useCallback(async (event) => {
+    event.preventDefault();
+    const { email, password } = event.target.elements;
+    try {
+      await db.firebaseApp
+        .auth()
+        .createUserWithEmailAndPassword(email.value, password.value);
+      // history.push("/");
+      window.location.reload();
+    } catch (error) {
+      alert(error);
+    }
+  });
+
   return (
     <div>
       <section className="text-gray-300 bg-gray-950 body-font">
@@ -46,6 +73,76 @@ function Register() {
                 />
                 {/* Login With Google */}
               </button>
+            </div>
+          </div>
+          <div className="text-center text-3xl border-dashed border-4 border-green-500 m-4 p-3">
+            OR
+          </div>
+          <div className="flex">
+            <div className="flex-initial">
+              <h1 className="text-center text-3xl">Register</h1>
+              <form
+                onSubmit={handleSignUp}
+                className="w-full max-w-xs m-auto bg-green-100 rounded p-5"
+              >
+                <label className="block mb-2 text-green-500">
+                  Email
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                    className="w-full p-2 mb-6 text-green-700 border-b-2 border-green-500 outline-none focus:bg-gray-300"
+                  />
+                </label>
+                <label className="block mb-2 text-green-500">
+                  Password
+                  <input
+                    name="password"
+                    type="password"
+                    placeholder="Password"
+                    className="w-full p-2 mb-6 text-green-700 border-b-2 border-green-500 outline-none focus:bg-gray-300"
+                  />
+                </label>
+                <button
+                  type="submit"
+                  className="w-full bg-green-700 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-6 rounded"
+                >
+                  Sign Up
+                </button>
+              </form>
+            </div>
+            {/*  */}
+            <div className="flex-initial ml-5">
+              <h1 className="text-center text-3xl">Log in</h1>
+              <form
+                onSubmit={handleLogin}
+                className="w-full max-w-xs m-auto bg-green-100 rounded p-5"
+              >
+                <label className="block mb-2 text-green-500">
+                  Email
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                    className="w-full p-2 mb-6 text-green-700 border-b-2 border-green-500 outline-none focus:bg-gray-300"
+                  />
+                </label>
+                <label className="block mb-2 text-green-500">
+                  Password
+                  <input
+                    name="password"
+                    type="password"
+                    placeholder="Password"
+                    className="w-full p-2 mb-6 text-green-700 border-b-2 border-green-500 outline-none focus:bg-gray-300"
+                  />
+                </label>
+                <button
+                  type="submit"
+                  className="w-full bg-green-700 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-6 rounded"
+                >
+                  Log in
+                </button>
+              </form>
             </div>
           </div>
         </div>
