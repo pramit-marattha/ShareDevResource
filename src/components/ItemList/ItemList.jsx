@@ -64,12 +64,12 @@ function Item({ listId, item }) {
         <span className="leading-relaxed text-base">Posted at {date}</span>
 
         <div className="flex items-center justify-center pt-4">
-          <button
+          {/* <button
             onClick={handleDeleteItem}
             className="inline-flex text-white bg-red-500 border-0 py-1 px-2 focus:outline-none hover:bg-red-300 rounded text-lg"
           >
             🗑️ Delete
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
